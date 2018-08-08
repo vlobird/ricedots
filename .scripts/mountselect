@@ -4,13 +4,6 @@ mountable=$(lsblk -rp | grep part | grep -v SWAP | grep -v sda | grep -v "t /" |
 
 chosen=$(echo "$mountable" | dmenu -i -p "Mount which drive?" | awk '{print $1}')
 [[ "$chosen" = "" ]] && exit 1
+name=$(echo "" | dmenu -i -p "Name to mount")
 
-mountpoint="$(find ~/mount -depth -maxdepth 2 2>/dev/null | dmenu -i -p "Where to mount?")"
-
-[[ "$mountpoint" = "" ]] && exit 1
-if [ ! -d "$mountpoint" ]
-then
-	mkdiryn=$(printf "No\\nYes" | dmenu -i -p "$mp does not exist. Create it?")
-	[ "$mkdiryn" = "Yes" ] && mkdir -p "$mp"
-fi
-sudo mount $chosen $mountpoint && pgrep -x dunst && notify-send "$chosen mounted to $mountpoint."
+pmount $chosen $name && pgrep -x dunst && notify-send "$chosen mounted to /media/$name."
