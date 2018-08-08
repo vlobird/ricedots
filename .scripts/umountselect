@@ -1,0 +1,8 @@
+#!/bin/bash
+opts="name,type,size,mountpoint"
+umountable=$(lsblk -rpo "$opts" | awk '$2=="part"&&$1!~/sda/&&$4!~/boot|SWAP/&&length($4)>1{printf "%s (%s) on %s\n",$1,$3,$4}')
+[[ "$umountable" = "" ]] && exit 1
+#
+chosen=$(echo "$umountable" | dmenu -i -p "Umount which drive?" | awk '{print $1}')
+[[ "$chosen" = "" ]] && exit 1
+sudo umount $chosen && pgrep -x dunst && notify-send "$chosen umounted."
