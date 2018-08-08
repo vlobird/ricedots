@@ -80,7 +80,8 @@ bindsym $mod+x			exec --no-startup-id ~/.config/i3/lock.sh
 bindsym $mod+space		focus mode_toggle
 bindsym $mod+Shift+space 	floating toggle
 
-bindsym $mod+BackSpace 		exec $term -e htop
+bindsym $mod+BackSpace 			exec $term -e htop
+bindsym $mod+Shift+BackSpace 		exec $term -e eject
 bindsym $mod+d		exec dmenu_run
 
 bindsym Print 			exec --no-startup-id scrot
