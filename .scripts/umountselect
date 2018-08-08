@@ -5,4 +5,4 @@ umountable=$(lsblk -rpo "$opts" | awk '$2=="part"&&$1!~/sda/&&$4!~/boot|SWAP/&&l
 #
 chosen=$(echo "$umountable" | dmenu -i -p "Umount which drive?" | awk '{print $1}')
 [[ "$chosen" = "" ]] && exit 1
-pumount $chosen && pgrep -x dunst && notify-send "$chosen umounted."
+sync && pumount $chosen && pgrep -x dunst && notify-send "$chosen umounted."
