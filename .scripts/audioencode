@@ -1,0 +1,10 @@
+#!/bin/bash
+[ ! -f /usr/bin/ffmpeg ] && echo && echo ""$0" depends on ffmpeg" && echo && exit
+
+if [ $# -ne 1 ]
+then echo && echo "Syntax: "$0" inputformat outputformat" && echo
+else
+for a in ./*.$1; do
+  ffmpeg -i "$a" -qscale:a 0 "${a[@]/%$1/$2}"
+done
+fi

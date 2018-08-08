@@ -1,0 +1,6 @@
+html {height:100%; margin:0; padding:0;}
+body {background-image:url(media/bg.png);font-size:10.5pt;color:#494949; padding:0; margin:0; height:100%; line-height:22pt;}
+* {padding:0; margin:0; outline:none;}
+a {text-decoration:none;}
+a:hover {border:none; color:#ff5f4a;}
+<++>

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+choises="RELOAD i3\nSHUTDOWN\nREBOOT\nLOG off"
+
+chosen=$(echo -e "$choises" | dmenu -i)
+
+case "$chosen" in
+	"RELOAD i3")	i3-msg restart ;;
+
+	SHUTDOWN)	shutdown now;;
+
+	REBOOT)		sudo reboot ;;
+
+	"LOG off")	i3-msg exit ;;
+esac

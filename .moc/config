@@ -1,0 +1,8 @@
+Keymap = keymap
+Theme = theme
+#readtags = no
+QueueNextSongReturn = no
+FormatString = "%(n:%n :)%(t:%t:)%(a: \(by %a\):)%(A: \(in %A\):)"
+##%(A: \(%A\):)"
+
+MusicDir = /home/flo/multimedia/music
