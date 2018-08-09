@@ -34,7 +34,9 @@ exec --no-startup-id xcompmgr -slt
 exec --no-startup-id xset -dpms
 exec --no-startup-id xset s off
 exec --no-startup-id numlockx
-exec --no-startup-id sh ~/nur_extern.sh
+exec --no-startup-id dunst
+exec --no-startup-id mocp -S
+exec --no-startup-id sh ~/.screenlayout/extern.sh
 exec_always --no-startup-id setxkbmap de
 exec_always --no-startup-id EDITOR=/usr/bin/vim
 exec_always --no-startup-id feh --recursive --randomize --bg-scale ~/multimedia/pictures/wallpapers
@@ -80,8 +82,7 @@ bindsym $mod+x			exec --no-startup-id ~/.config/i3/lock.sh
 bindsym $mod+space		focus mode_toggle
 bindsym $mod+Shift+space 	floating toggle
 
-bindsym $mod+BackSpace 			exec $term -e htop
-bindsym $mod+Shift+BackSpace 		exec $term -e eject
+bindsym $mod+BackSpace 		exec $term -e htop
 bindsym $mod+d		exec dmenu_run
 
 bindsym Print 			exec --no-startup-id scrot
@@ -137,11 +138,20 @@ bindsym $mod+v		exec $term -e vim
 # VOLUME
 bindsym $mod+a			exec $term -e alsamixer
 bindsym $mod+Shift+a		exec pavucontrol
-bindsym $mod+Shift+m		exec --no-startup-id pamixer -t
-bindsym $mod+plus		exec --no-startup-id pamixer -i 1
-bindsym $mod+Shift+plus		exec --no-startup-id pamixer -i 5
-bindsym $mod+minus 		exec --no-startup-id pamixer -d 1
-bindsym $mod+Shift+minus	exec --no-startup-id pamixer -d 5
+# for pamixer
+#bindsym $mod+Shift+m		exec --no-startup-id pamixer -t
+#bindsym $mod+plus		exec --no-startup-id pamixer -i 1
+#bindsym $mod+Shift+plus	exec --no-startup-id pamixer -i 5
+#bindsym $mod+minus 		exec --no-startup-id pamixer -d 1
+#bindsym $mod+Shift+minus	exec --no-startup-id pamixer -d 5
+
+#for amixer
+bindsym $mod+Shift+m		exec --no-startup-id sh ~/.scripts/amixer_mute
+bindsym $mod+plus		exec --no-startup-id amixer set Master -q 1%+
+bindsym $mod+Shift+plus		exec --no-startup-id amixer set Master -q 5%+
+bindsym $mod+minus		exec --no-startup-id amixer set Master -q 1%-
+bindsym $mod+Shift+minus	exec --no-startup-id amixer set Master -q 5%-
+
 
 # MUSIC
 bindsym $mod+m 		exec $term -e $music

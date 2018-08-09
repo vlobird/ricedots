@@ -1,0 +1,39 @@
+command=/usr/lib/i3blocks/$BLOCK_NAME
+separator_block_width=30
+markup=monospace
+
+[MOC]
+command=~/.config/i3blocks/moc
+interval=1
+
+[CPU]
+interval=1
+label=CPU
+command=~/.config/i3blocks/cpu
+
+[WIFI]
+command=~/.config/i3blocks/ip
+interval=10
+align=left
+
+[BATTERY]
+command=acpi | cut -d " " -f3-5 |  sed -e "s/,//g;s/Discharging//;s/Charging/⚡/;s/Unknown/⚡/;s/Full//;s/ 0*/ /g;s/ :/ /g"
+interval=1
+
+[SSD]
+interval=1
+command=~/.config/i3blocks/files
+
+[VOLUME]
+label=♪
+interval=1
+command=~/.config/i3blocks/volume
+
+[DATE]
+command=date '+%d.%m (%A)'
+interval=60
+
+[TIME]
+command=date '+%H:%M'
+color=#75B5AA
+interval=5

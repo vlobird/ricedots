@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# for pamixer
+#case $BLOCK_BUTTON in
+	#1) urxvt -e pulsemixer & disown ;;
+	#3) pamixer -t ;;
+	#4) pamixer -i 5 ;;
+	#5) pamixer -d 5 ;;
+#esac
+
+#mutetest=$(pamixer --get-mute)
+#[ "$mutetest" = true ] && echo mute
+#echo $(pamixer --get-volume)%
+
+#for amixer
+case $BLOCK_BUTTON in
+	1) urxvt -e alsamixer & disown ;;
+	3) sh ~/.scripts/amixer_mute ;;
+	4) amixer set Master -q 5%+ ;;
+	5) amixer set Master -q 5%- ;;
+esac
+getVolume=$(amixer get Master state | awk '$1=="Front"&&$2=="Left:"{print $5}')
+getState=$(amixer get Master state | awk '$1=="Front"&&$2=="Left:"{print $6}')
+
+[ "$getState" = "[off]" ] && echo [mute] && exit
+echo "$getVolume"

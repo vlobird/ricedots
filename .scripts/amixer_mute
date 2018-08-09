@@ -1,0 +1,5 @@
+#!/bin/bash
+
+getState=$(amixer get Master state | awk '$1=="Front"&&$2=="Left:"{print $6}')
+[ "$getState" = "[off]" ] && amixer set Master -q unmute && exit
+amixer set Master -q mute
