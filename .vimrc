@@ -7,7 +7,11 @@ set nocompatible
 filetype plugin on
 syntax on
 
+" TABING
 so ~/.vim/tabline.vim
+map <Tab> gt
+map <S-Tab> gT
+map gf <C-w>gf
 
 " IDE KEYMAPS
 autocmd FileType markdown so ~/.vim/ide/markdown.vim
@@ -22,7 +26,6 @@ autocmd FileType shell so ~/.vim/ide/shell.vim
  map MM :set nohls<Enter>
  map <C-y> "+y
  map <C-p> "+p
- map gf <C-w>gf
 
  map <space><tab> <Esc>/<++><Enter>ca<
  inoremap <space><tab> <Esc>/<++><Enter>ca<
