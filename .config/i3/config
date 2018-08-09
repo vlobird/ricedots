@@ -26,7 +26,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-font pango:font-awesome 12
+font pango:monospace 12
 
 # STARTUP
 exec --no-startup-id nm-applet
