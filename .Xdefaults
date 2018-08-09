@@ -30,7 +30,7 @@
 *color15: #f1efee
 
 URxvt.intensityStyles:	false
-URxvt.background:       [75]#000000
+URxvt.background:       [90]#000000
 URxvt.depth:		32
 URxvt.font: 		xft:monospace:size=12
 URxvt.scrollBar:	false
@@ -46,8 +46,10 @@ URxvt.url-select.underline: true
 !! keyboard-select:
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 !! resize-font
-URxvt.resize-font.smaller:	Alt-Down
-URxvt.resize-font.bigger:	Alt-Up
+URxvt.keysym.C-j:     resize-font:smaller
+URxvt.keysym.C-k:      resize-font:bigger
+URxvt.keysym.C-0:     resize-font:reset
+!!URxvt.keysym.C-question:  resize-font:show
 !! Matcher
 URxvt.url-launcher:	xdg-open
 URxvt.matcher.button: 1
