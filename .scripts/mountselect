@@ -5,6 +5,7 @@ mountable=$(lsblk -rpo "$opts" | awk '$2=="part"&&$4==""{printf "%s (%s)\n",$1,$
 
 chosen=$(echo "$mountable" | dmenu -i -p "Mount which drive?" | awk '{print $1}')
 [[ "$chosen" = "" ]] && exit 1
-name=$(echo "" | dmenu -i -p "Name to mount")
+mountpoints=$(find /mnt -depth -maxdepth 1)
+name=$(echo "$mountpoints" | dmenu -i -p "Choose mountpoint")
 
-pmount $chosen $name && pgrep -x dunst && notify-send "$chosen mounted to /media/$name."
+sudo mount $chosen $name && pgrep -x dunst && notify-send "$chosen mounted to $name."
