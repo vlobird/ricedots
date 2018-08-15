@@ -26,7 +26,7 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-font pango:monospace 12
+font pango:monospace 11
 
 # STARTUP
 exec --no-startup-id nm-applet
@@ -146,7 +146,7 @@ bindsym $mod+Shift+a		exec pavucontrol
 #bindsym $mod+Shift+minus	exec --no-startup-id pamixer -d 5
 
 #for amixer
-bindsym $mod+Shift+m		exec --no-startup-id sh ~/.scripts/amixer_mute
+bindsym $mod+Shift+m		exec --no-startup-id amixer set Master -q toggle
 bindsym $mod+plus		exec --no-startup-id amixer set Master -q 1%+
 bindsym $mod+Shift+plus		exec --no-startup-id amixer set Master -q 5%+
 bindsym $mod+minus		exec --no-startup-id amixer set Master -q 1%-
