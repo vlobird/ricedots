@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/flo/work/html/poolbrothers.de-work/testfiles'
+let g:netrw_dirhist_2='/home/flo/work/html/poolbrothers.de-work/testfiles/Regelwerk'
+let g:netrw_dirhist_3='/home/flo/mount'
+let g:netrw_dirhist_4='/home/flo/.vim/autoload'
