@@ -1,0 +1,8 @@
+#!/bin/bash
+
+[[ $BLOCK_BUTTON = "1" ]] && st -e sudo apt upgrade & disown
+
+sudo apt update > /dev/null
+aptlist=$(apt list --upgradeable | sed '1,1d' | wc -l)
+
+echo ["$aptlist"]
