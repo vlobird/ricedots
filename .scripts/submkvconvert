@@ -1,0 +1,14 @@
+#!/bin/bash
+mkdir inputfiles
+for a in *.mp4 
+do
+	echo "$a" > tmpfile
+	input=$(cat tmpfile)
+	ensub=$(cat tmpfile|sed 's/mp4/en.srt/')
+	desub=$(cat tmpfile|sed 's/mp4/de.srt/')
+	output=$(cat tmpfile|sed 's/mp4/mkv/')
+	mkvmerge "$input" "$ensub" "$desub" -o "$output"
+	rm tmpfile
+done
+mv *.mp4 inputfiles
+mv *.srt inputfiles

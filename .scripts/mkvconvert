@@ -1,0 +1,15 @@
+#!/bin/bash
+[ $# -ne 1 ] && echo && echo Syntax: "$0" AUSGANGSFORMAT && echo && exit
+[ ! -f /usr/bin/mkvmerge ] && echo && echo "Script depends on mkvmerge" && echo && exit
+
+for a in *.$1
+do
+
+echo $a > file
+OUTPUTFILE=$(sed -r s/.$1/.mkv/ file)
+
+mkvmerge "$a" -o "$OUTPUTFILE"
+
+rm file
+
+done
