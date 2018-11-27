@@ -16,7 +16,7 @@ RPROMPT='%F{white}%T%f'
 newnote(){
 workdir=~/work/markdown
 [ $# -ne 1 ] && echo && echo "Syntax: $0 <notename>" && echo && return 1
-mkdir -p $workdir/$1/img && echo "# "$1"" > $workdir/$1/$1.md && echo "> $(date +%d.%m.%Y)" >> $workdir/$1/$1.md && cd $workdir/$1 && vim $1.md
+mkdir -p $workdir/$1/img && echo "% "$1"" > $workdir/$1/$1.md && echo "% $(date +%d.%m.%Y)" >> $workdir/$1/$1.md && cd $workdir/$1 && vim $1.md
 }
 
 newdoc(){
