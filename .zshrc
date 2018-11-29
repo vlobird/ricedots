@@ -77,14 +77,6 @@ alias cfr='vim ~/.config/ranger/rc.conf'
 alias cfv='vim ~/.vimrc'
 alias cfz='vim ~/.zshrc'
 
-# PACMAN
-alias pQ='pacman -Q | grep '
-alias pQu='pacman -Qu'
-alias pS='sudo pacman -S'
-alias pSs='sudo pacman -Ss'
-alias pSi='sudo pacman -Si'
-alias pRdd='sudo pacman -Rdd'
-
 # CD
 alias cd..='cd ..'
 alias cdc='cd ~/.config'
