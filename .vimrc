@@ -6,6 +6,7 @@ set relativenumber
 set nocompatible
 filetype plugin on
 syntax on
+filetype plugin indent on
 
 " PATHOGEN
 execute pathogen#infect()
@@ -17,13 +18,22 @@ map <Tab> gt
 map <S-Tab> gT
 map gf <C-w>gf
 
+" Splitviews
+set splitbelow splitright
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
 " IDE KEYMAPS
 autocmd FileType markdown so ~/.vim/ide/markdown.vim
-autocmd FileType tex so ~/.vim/ide/tex.vim
+autocmd FileType tex source ~/.vim/ide/tex.vim
 autocmd FileType html so ~/.vim/ide/html.vim
 autocmd FileType css so ~/.vim/ide/css.vim
 autocmd FileType js so ~/.vim/ide/js.vim
-autocmd FileType shell so ~/.vim/ide/shell.vim
+autocmd FileType sh so ~/.vim/ide/shell.vim
+autocmd FileType c so ~/.vim/ide/c.vim
+autocmd FileType cpp so ~/.vim/ide/cpp.vim
 
 " GLOBAL KEYMAPS
 map <F2> :NERDTreeToggle<Enter>
@@ -35,4 +45,3 @@ map <C-p> "+p
 map <space><tab> <Esc>/<++><Enter>ca<
 inoremap <space><tab> <Esc>/<++><Enter>ca<
 vnoremap <space><tab> <Esc>/<++><Enter>ca<
-
