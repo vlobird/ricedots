@@ -1,5 +1,6 @@
 let g:livepreview_previewer = 'zathura'
 let g:livepreview_engine = 'pdflatex'
+map <leader>n :SNIP
 
 " COMPILING
 map <F5> :w<Enter> :!pdflatex <C-r>%<Enter><Enter> :!pdflatex <C-r>%<Enter><Enter>
@@ -17,11 +18,11 @@ inoremap ;i \textit{}<Space><++><Esc>F}i
 map ;i i\textit{<Esc>ea}<Esc>
 inoremap ;u \underline{}<Space><++><Esc>F}i
 map ;u i\underline{<Esc>ea}<Esc>
-command CENTER execute "read ~/.vim/ide/snippets/tex_center"
-command QUOTE execute "read ~/.vim/ide/snippets/tex_quote"
-command FLUSHRIGHT execute "read ~/.vim/ide/snippets/tex_flushright"
-command FLUSHLEFT execute "read ~/.vim/ide/snippets/tex_flushleft"
-command FOOTNOTESIZE execute "read ~/.vim/ide/snippets/tex_footnotesize"
+command SNIPcenter execute "read ~/.vim/ide/snippets/tex_center"
+command SNIPquote execute "read ~/.vim/ide/snippets/tex_quote"
+command SNIPflushright execute "read ~/.vim/ide/snippets/tex_flushright"
+command SNIPflushleft execute "read ~/.vim/ide/snippets/tex_flushleft"
+command SNIPfootnotesize execute "read ~/.vim/ide/snippets/tex_footnotesize"
 
 " SPACING
 inoremap ;np \newpage<Enter><Enter>
@@ -35,11 +36,11 @@ inoremap ;su \subsection{}<Enter><Enter><++><Enter><Enter><Esc>4k$i
 inoremap ;suu \subsubsection{}<Enter><Enter><++><Enter><Enter><Esc>4k$i
 inoremap ;p \paragraph{}<Enter><Enter><++><Enter><Enter><Esc>4k$i
 inoremap ;sp \subparagraph{}<Enter><Enter><++><Enter><Enter><Esc>4k$i
-command FRAME execute "read ~/.vim/ide/snippets/tex_frame"
+command SNIPframe execute "read ~/.vim/ide/snippets/tex_frame"
 
 " LISTS
-command ITEMIZE execute "read ~/.vim/ide/snippets/tex_itemize"
-command ENUMERATE execute "read ~/.vim/ide/snippets/tex_enumerate"
+command SNIPitemize execute "read ~/.vim/ide/snippets/tex_itemize"
+command SNIPenumerate execute "read ~/.vim/ide/snippets/tex_enumerate"
 inoremap ;; \item<space>
 
 " SPECIAL
