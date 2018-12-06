@@ -1,4 +1,5 @@
 " GENERAL
+let mapleader =" "
 colorscheme peachpuff
 set wildmenu
 set number
@@ -14,12 +15,15 @@ call pathogen#helptags()
 
 " TABING
 so ~/.vim/tabline.vim
+map <leader>t :tabedit<Space>
 map <Tab> gt
 map <S-Tab> gT
 map gf <C-w>gf
 
-" Splitviews
+" SPLITVIEWS
 set splitbelow splitright
+map <leader>s :split<Space>
+map <leader>v :vsplit<Space>
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
@@ -37,8 +41,8 @@ autocmd FileType cpp so ~/.vim/ide/cpp.vim
 
 " GLOBAL KEYMAPS
 map <F2> :NERDTreeToggle<Enter>
-map M :set hls<Enter>
-map MM :set nohls<Enter>
+map <leader>h :set hls<Enter>
+map <leader>nh :set nohls<Enter>
 map <C-y> "+y
 map <C-p> "+p
 
