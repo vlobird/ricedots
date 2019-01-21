@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[ $# -ne 1 ] && echo && echo Syntax: "$0" \<linklist\> && echo && exit
+threads=$(cat $1 | wc -l)
+if [ "$threads" -gt 10 ]
+then	echo
+	echo -n "More than 10 threads... are you sure to continue? (y/N) "
+	read answer
+	case $answer in
+		[yY])	cat $1 | parallel -j "$threads" wget ;;
+		*)	exit
+	esac
+fi
+cat $1 | parallel -j "$threads" wget
