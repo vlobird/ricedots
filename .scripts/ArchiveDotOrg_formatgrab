@@ -1,0 +1,43 @@
+#!/bin/bash
+main(){
+[ $# -ne 3 ] && echo && echo Syntax: "$0" \<archivelink\> \<format\> \<outputfile\> && echo && exit
+
+curl -s $1 | \
+sed 's/href=/\nhref=/g' | \
+grep href=\" | \
+sed 's/.*href="//g;s/".*//g' > tmpfile
+
+for a in $(grep .$2$ tmpfile)
+do
+	echo "$1""/""$a" >> $3
+done
+rm tmpfile
+less $3
+
+echo
+echo -n "Do you wanna download the grabed files? (y/N) "
+read download
+
+case $download in
+	[yY])	download $3;;
+	*)	exit
+esac
+}
+
+
+download(){
+downloadlist="$1"
+threads=$(cat $downloadlist | wc -l)
+if [ "$threads" -gt 10 ]
+then	echo
+	echo -n "More than 10 threads ("$threads")... are you sure to continue? (y/N) "
+	read answer
+	case $answer in
+		[yY])	cat $downloadlist | parallel -j "$threads" wget ;;
+		*)	exit
+	esac
+fi
+cat $downloadlist | parallel -j "$threads" wget
+}
+
+main ${@}
