@@ -4,7 +4,7 @@
 threads=$(cat $1 | wc -l)
 if [ "$threads" -gt 10 ]
 then	echo
-	echo -n "More than 10 threads... are you sure to continue? (y/N) "
+	echo -n "More than 10 threads ("$threads")... are you sure to continue? (y/N) "
 	read answer
 	case $answer in
 		[yY])	cat $1 | parallel -j "$threads" wget ;;
