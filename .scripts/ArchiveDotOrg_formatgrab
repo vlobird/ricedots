@@ -33,11 +33,11 @@ then	echo
 	echo -n "More than 10 threads ("$threads")... are you sure to continue? (y/N) "
 	read answer
 	case $answer in
-		[yY])	cat $downloadlist | parallel -j "$threads" wget ;;
+		[yY])	cat $downloadlist | parallel --verbose -j "$threads" wget && exit ;;
 		*)	exit
 	esac
 fi
-cat $downloadlist | parallel -j "$threads" wget
+cat $downloadlist | parallel --verbose -j "$threads" wget
 }
 
 main ${@}
