@@ -1,0 +1,22 @@
+#!/bin/bash
+set -x
+archive=$(readlink -f "$1")
+directory=$(echo "$archive" | sed 's/\.[^\/.]*$//') &&
+	mkdir -p "$directory" &&
+	cd "$directory" || exit
+
+	case "$archive" in
+		*.tar.bz2|*.tar.xz|*.tbz2) tar xvjf "$archive" ;;
+		*.tar.gz|*.tgz) tar xvzf "$archive" ;;
+		*.lzma) unlzma "$archive" ;;
+		*.bz2) bunzip2 "$archive" ;;
+		*.rar) unrar x "$archive" ;;
+		*.gz) gunzip "$archive" ;;
+		*.tar) tar xvf "$archive" ;;
+		*.zip) unzip "$archive" ;;
+		*.Z) uncompress "$archive" ;;
+		*.7z) 7z x "$archive" ;;
+		*.xz) unxz "$archive" ;;
+		*.exe) cabextract "$archive" ;;
+		*) printf "extract: '%s' - unknown archive method\\n" "$archive" ;;
+	esac

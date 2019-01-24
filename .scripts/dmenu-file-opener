@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # ========================= #
 # === dmenu-file-opener === #
 # ========================= #
@@ -11,17 +10,10 @@
 # by atheist_doctor <reddit.com/u/atheist_doctor>
 # License: GNU GPLv3
 
-
-# === Dependencies
-# bash
-# dmenu
-# dunst
-
-
 # === Code
-
-# read all files in home-dir and smash in dmenu
-choose=$(ls -R ~ | dmenu -i -p "select file:") 
+# read all files in $1 and smash in dmenu
+cd $1
+choose=$(ls -R | dmenu -i -p "select file:") 
 [[ "$choose" = "" ]] && exit
 
 # get the absolute path of the file
@@ -34,8 +26,20 @@ fi
 
 
 # open selected file
-# just change with your programs to open
+[ -d $chosen ] && urxvt -e ranger "$chosen" && exit
 case $chosen in
+	*.tar.bz2|*.tar.xz|*.tbz2|*.tar.gz|*.tgz|*.lzma|*.bz2|*.rar|*.gz|*.tar|*.zip|*.Z|*.7z|*.xz|*.exe)
+		arselect=$(echo -e "extract\nshow in ranger" | dmenu -i -p "file is an arichve")
+		case $arselect in
+			extract)
+				urxvt -e eXtract $chosen
+				directory=$(echo "$chosen" | sed 's/\.[^\/.]*$//')
+				urxvt -e ranger $directory & exit ;;
+			"show in ranger")
+				directory=$(echo "$chosen" | sed s/"$choose"//)
+				urxvt -e ranger $directory & exit ;;
+		esac ;;
+
 	*.png|*.jpg|*.jpeg|*.bmp|*.tif|*.tiff|*.gif)	
 		sxiv "$chosen" ;;
 
