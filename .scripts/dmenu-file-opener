@@ -32,12 +32,12 @@ case $chosen in
 		arselect=$(echo -e "extract\nshow in ranger" | dmenu -i -p "file is an arichve")
 		case $arselect in
 			extract)
-				urxvt -e eXtract $chosen
+				urxvt -e eXtract "$chosen"
 				directory=$(echo "$chosen" | sed 's/\.[^\/.]*$//')
-				urxvt -e ranger $directory & exit ;;
+				urxvt -e ranger "$directory" && exit ;;
 			"show in ranger")
 				directory=$(echo "$chosen" | sed s/"$choose"//)
-				urxvt -e ranger $directory & exit ;;
+				urxvt -e ranger "$directory" && exit ;;
 		esac ;;
 
 	*.png|*.jpg|*.jpeg|*.bmp|*.tif|*.tiff|*.gif)	
