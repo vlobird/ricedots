@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# ========================= #
+# === dmenu-file-opener === #
+# ========================= #
+
+# === Description
+# Tool to open any file in your home-directory via dmenu
+# inspiered by fzf
+
+# by atheist_doctor <reddit.com/u/atheist_doctor>
+# License: GNU GPLv3
+
+
+# === Dependencies
+# bash
+# dmenu
+# dunst
+
+
+# === Code
+
+# read all files in home-dir and smash in dmenu
+choose=$(ls -R ~ | dmenu -i -p "select file:") 
+[[ "$choose" = "" ]] && exit
+
+# get the absolute path of the file
+count=$(find `pwd` -name "$choose" | wc -l)
+if [ $count -gt 1 ]
+then	chosen=$(find `pwd` -name "$choose" | dmenu -i -p "select file:")
+else	chosen=$(find `pwd` -name "$choose")
+fi
+[[ "$chosen" = "" ]] && exit
+
+
+# open selected file
+# just change with your programs to open
+case $chosen in
+	*.png|*.jpg|*.jpeg|*.bmp|*.tif|*.tiff|*.gif)	
+		sxiv "$chosen" ;;
+
+	*.pdf)
+		zathura "$chosen" ;;
+
+	*.doc|*.docx|*.ppt|*.pptx|*.xls|*.xlsx)
+		libreoffice "$chosen" ;;
+
+	*.html|*.htm|*.xml|*.php)
+		firefox "$chosen" ;;
+
+	*.mkv|*.mp4|*.avi|*.mpge|*.mp2|*.ogv)
+		mpv "$chosen" ;;
+
+	*.mp3|*.aac|*.flac|*.ogg|*.wav|*.wma)
+		urxvt -e mpv "$chosen" ;;
+
+	*.txt|*.log|*.cfg|*.tex|*.md|*.markdown)
+		urxvt -e vim "$chosen" ;;
+
+	*.c|*.cpp|*.js|*.css|*.java)
+		urxvt -e vim "$chosen" ;;
+
+	*)
+		pgrep -x dunst && notify-send "Couldn't detect filetype \nFile open in vim..."
+		urxvt -e vim "$chosen"
+esac
