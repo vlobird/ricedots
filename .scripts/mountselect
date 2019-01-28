@@ -6,6 +6,7 @@ mountable=$(lsblk -rpo "$opts" | awk '$2=="part"&&$4==""{printf "%s (%s)\n",$1,$
 chosen=$(echo "$mountable" | dmenu -i -p "Mount which drive?" | awk '{print $1}')
 [[ "$chosen" = "" ]] && exit 1
 used=$(lsblk -o mountpoint | awk '$1~"mnt"')
+[[ "$used" = "" ]] && used=nothing
 mountpoints=$(find /mnt -depth -maxdepth 1 | grep -v "$used")
 name=$(echo "$mountpoints" | dmenu -i -p "Choose mountpoint")
 
