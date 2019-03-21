@@ -1,0 +1,24 @@
+#!/bin/bash
+
+failed=downloadedUnsuccessfully.txt
+done=downloadedSuccessfully.txt
+list=downloadLinks.txt
+cd ~/.opt/SMLoadr
+[ -f $failed ] && rm $failed
+
+download(){
+smloadr -q "MP3_320" -p "/home/$USER/downloads/" -d all
+reloadcheck
+}
+
+reloadcheck(){
+if [ -s $failed ]
+then	cat "$failed" > $list
+	rm $failed
+	download
+else	rm $done
+	exit
+fi
+}
+
+download
