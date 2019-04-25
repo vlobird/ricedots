@@ -219,6 +219,7 @@ for_window [title="mutt"] move to workspace $ws9
 for_window [title="mocp"] move to workspace $ws10; workspace $ws10
 for_window [title="qalc"] floating toggle 
 for_window [title="qalc"] border pixel 5
+for_window [ title="^pdfpc - present" ] border none floating enable
 
 
 # SPECIAL KEYS
