@@ -1,20 +1,11 @@
 # vim: filetype=i3
 
-# BASIC
+# basic configs
 floating_modifier $mod
 set $mod Mod4
 set $term urxvt
 set $browser firefox
-set $browser2 surf
-set $music mocp
-set $pause --no-startup-id mocp -G 
-set $next --no-startup-id mocp -f
-set $prev --no-startup-id mocp -r
-set $lilfor --no-startup-id mocp -k 10
-set $bigfor --no-startup-id mocp -k 120
-set $lilbak --no-startup-id mocp -k -10
-set $bigbak --no-startup-id mocp -k -120
-set $beg --no-startup-id mocp -j 0%
+set $browser2 torbrowser
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -25,38 +16,10 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+font pango:inconsolata 11
+bindsym $mod+x			exec --no-startup-id ~/.config/i3/lock.sh
 
-font pango:monospace 11
-
-# STARTUP
-exec --no-startup-id nm-applet
-exec --no-startup-id xcompmgr -slt
-exec --no-startup-id xset -dpms
-exec --no-startup-id xset s off
-exec --no-startup-id numlockx
-exec --no-startup-id dunst
-exec --no-startup-id mocp -S
-exec --no-startup-id sh ~/.screenlayout/extern.sh
-exec_always --no-startup-id setxkbmap de
-exec_always --no-startup-id EDITOR=/usr/bin/vim
-exec_always --no-startup-id feh --recursive --randomize --bg-scale ~/multimedia/pictures/wallpapers
-
-
-# GAPS
-hide_edge_borders both
-for_window [class="^.*"] border pixel 0 
-gaps inner 15 
-gaps outer 15
-bindsym $mod+Shift+d	gaps inner current set 0; gaps outer current set 0
-bindsym $mod+Shift+t	gaps inner current set 15; gaps outer current set 15
-
-bindsym $mod+i		gaps inner current plus 5
-bindsym $mod+Shift+i	gaps inner current minus 5
-bindsym $mod+o		gaps outer current plus 5
-bindsym $mod+Shift+o	gaps outer current minus 5
-
-
-# BAR
+# bar
 bar {
 colors {
 	focused_workspace #008080 #008080 #ffffff
@@ -68,38 +31,38 @@ status_command i3blocks
 position top
 }
 
-# SYSTEM
-bindsym $mod+Return 		exec $term
-bindsym $mod+Shift+Return 	exec $term -e qalc
+
+# windows
+## general
 bindsym $mod+Home		split horizontal
 bindsym $mod+End		split vertical
-
 bindsym $mod+Escape		kill
-bindsym $mod+Shift+x		exec --no-startup-id sh ~/.scripts/powermenu
 bindsym $mod+Shift+p		exec --no-startup-id sh ~/.scripts/displayselect
-bindsym $mod+x			exec --no-startup-id ~/.config/i3/lock.sh
-
 bindsym $mod+space		focus mode_toggle
 bindsym $mod+Shift+space 	floating toggle
 
-bindsym $mod+BackSpace 		exec $term -e htop
-bindsym $mod+d		exec dmenu_run
+## gaps
+hide_edge_borders both
+for_window [class="^.*"] border pixel 1 
+gaps inner 15 
+gaps outer 15
+smart_borders on
+bindsym $mod+Shift+d	gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+t	gaps inner current set 15; gaps outer current set 15
+bindsym $mod+i		gaps inner current plus 5
+bindsym $mod+Shift+i	gaps inner current minus 5
+bindsym $mod+o		gaps outer current plus 5
+bindsym $mod+Shift+o	gaps outer current minus 5
 
-bindsym Print 			exec --no-startup-id scrot
-bindsym Shift+Print 		exec --no-startup-id scrot -u
-
-
-# RESIZE
+## resize
 bindsym $mod+f		fullscreen toggle
 bindsym $mod+t		split toggle
-
 bindsym $mod+z		resize grow width 10 px or 10 ppt
 bindsym $mod+Shift+z	resize shrink width 10 px or 10ppt
 bindsym $mod+u		resize grow height 10 px or 10 ppt
 bindsym $mod+Shift+u	resize shrink height 10 px or 10 ppt
 
-
-# MOVE
+## move
 bindsym $mod+Shift+Left		move left 30
 bindsym $mod+Shift+h		move left
 bindsym $mod+Shift+Right	move right 30
@@ -109,8 +72,7 @@ bindsym $mod+Shift+k		move up
 bindsym $mod+Shift+Down		move down 30
 bindsym $mod+Shift+j		move down
 
-
-#FOCUS
+## focus
 bindsym $mod+Left	focus left
 bindsym $mod+h		focus left
 bindsym $mod+Right	focus right
@@ -121,76 +83,8 @@ bindsym $mod+Down	focus down
 bindsym $mod+j		focus down
 
 
-# WEB
-bindsym $mod+w		exec $browser ~/.config/startpage/index.html
-bindsym $mod+Shift+w	exec $browser2  surf ~/.config/startpage/index.html
-bindsym $mod+e		exec $term -e mutt
-bindsym $mod+Shift+n	exec $term -e newsboat
-
-
-# OFFICE
-bindsym $mod+r 		exec $term -e ranger
-bindsym $mod+Shift+r	exec $term -e sudo ranger
-bindsym $mod+c		exec $term -e calcurse
-bindsym $mod+v		exec $term -e vim
-
-
-# VOLUME
-bindsym $mod+a			exec $term -e alsamixer
-bindsym $mod+Shift+a		exec pavucontrol
-# for pamixer
-#bindsym $mod+Shift+m		exec --no-startup-id pamixer -t
-#bindsym $mod+plus		exec --no-startup-id pamixer -i 1
-#bindsym $mod+Shift+plus	exec --no-startup-id pamixer -i 5
-#bindsym $mod+minus 		exec --no-startup-id pamixer -d 1
-#bindsym $mod+Shift+minus	exec --no-startup-id pamixer -d 5
-
-#for amixer
-bindsym $mod+Shift+m		exec --no-startup-id amixer set Master -q toggle
-bindsym $mod+plus		exec --no-startup-id amixer set Master -q 1%+
-bindsym $mod+Shift+plus		exec --no-startup-id amixer set Master -q 5%+
-bindsym $mod+minus		exec --no-startup-id amixer set Master -q 1%-
-bindsym $mod+Shift+minus	exec --no-startup-id amixer set Master -q 5%-
-
-
-# MUSIC
-bindsym $mod+m 		exec $term -e $music
-bindsym $mod+p		exec $pause
-bindsym $mod+b		exec $prev
-bindsym $mod+n		exec $next
-#bindsym $mod+o		exec --no-startup-id $beg
-
-
-	
-# F-BUTTONS
-#bindsym F1		
-#bindsym F2
-#bindsym F3
-#bindsym F4
-#bindsym F5
-#bindsym F6
-#bindsym F7
-#bindsym F8
-#bindsym F9
-#bindsym F10
-bindsym F11		fullscreen toggle
-#bindsym F12
-
-#bindsym $mod+F1
-#bindsym $mod+F2
-bindsym $mod+F3		exec --no-startup-id arandr
-#bindsym $mod+F4
-#bindsym $mod+F5 
-#bindsym $mod+F6
-bindsym $mod+F7		exec transset-df -a --dec .15
-bindsym $mod+F8		exec transset-df -a --inc .15
-bindsym $mod+F9		exec --no-startup-id bash ~/.scripts/mountselect
-bindsym $mod+F10	exec --no-startup-id bash ~/.scripts/umountselect
-#bindsym $mod+F11	
-#bindsym $mod+F12	
-
-
-# WORKSPACES
+# workspaces
+## go to workspace
 bindsym $mod+1		workspace $ws1
 bindsym $mod+2		workspace $ws2
 bindsym $mod+3		workspace $ws3
@@ -204,6 +98,7 @@ bindsym $mod+0		workspace $ws10
 bindsym $mod+Tab		workspace next
 bindsym $mod+Shift+Tab		workspace prev
 
+## move to workspace
 bindsym $mod+Shift+1	move container to workspace $ws1
 bindsym $mod+Shift+2	move container to workspace $ws2
 bindsym $mod+Shift+3	move container to workspace $ws3
@@ -215,70 +110,14 @@ bindsym $mod+Shift+8	move container to workspace $ws8
 bindsym $mod+Shift+9	move container to workspace $ws9
 bindsym $mod+Shift+0	move container to workspace $ws10
 
+# options for windows
 for_window [title="mutt"] move to workspace $ws9
-for_window [title="mocp"] move to workspace $ws10; workspace $ws10
+for_window [title="ncmpcpp"] move to workspace $ws10; workspace $ws10
+for_window [title="cmus"] move to workspace $ws10; workspace $ws10
 for_window [title="qalc"] floating toggle 
+for_window [title="feh"] floating toggle 
+for_window [title="feh"] border pixel 5
 for_window [title="qalc"] border pixel 5
+for_window [title="vncviewer"] floating toggle 
 for_window [ title="^pdfpc - present" ] border none floating enable
-
-
-# SPECIAL KEYS
-#bindsym XF86Launch1		
-bindsym XF86AudioPlay		exec $pause
-bindsym XF86AudioPause		exec $pause
-bindsym XF86AudioNext		exec $next
-bindsym XF86AudioPrev		exec $prev
-bindsym XF86AudioStop		exec $pause
-
-bindsym XF86AudioRaiseVolume	exec --no-startup-id pamixer -i 5
-bindsym XF86AudioLowerVolume	exec --no-startup-id pamixer -d 5
-bindsym XF86AudioMute		exec --no-startup-id pamixer -t
-
-bindsym XF86Mail		exec $term -e "mutt -F ~/.config/mutt/muttrc"
-bindsym XF86HomePage		exec --no-startup-id $browser 
-bindsym $mod+XF86HomePage	exec --no-startup-id $browser
-bindsym $mod+XF86WWW		exec --no-startup-id $browser
-
-bindsym XF86Calculator		exec $term -e qalc
-
-
-###	<UNBIND KEYS>
-# bindsym $mod+q	
-# bindsym $mod+Shift+q
-# bindsym $mod+Shift+Home	
-# bindsym $mod+Shift+End		
-# bindsym Scroll_Lock		
-# bindsym $mod+Scroll_Lock	
-# bindsym Pause			
-# bindsym $mod+Pause		
-# bindsym $mod+Prior	
-# bindsym $mod+Shift+Prior	
-# bindsym $mod+Next	
-# bindsym $mod+Shift+Next	
-# bindsym $mod+Shift+Escape
-# bindsym $mod+g		
-# bindsym $mod+Shift+v	
-# bindsym $mod+semicolon	
-# bindsym $mod+backslash 	
-#bindsym $mod+Shift+c	exec --no-startup-id audacity
-#bindsym $mod+u		exec --no-startup-id mupdf ~/.config/Scripts/luke_guide.pdf
-#bindsym $mod+Shift+e	exec --no-startup-id icedove ; exec --no-startup-id thunderbird
-#bindsym $mod+Shift+f	exec --no-startup-id filezilla
-#bindsym $mod+BackSpace		exec i3-msg exit
-#bindsym $mod+Shift+BackSpace	exec reboot
-#bindsym $mod+Shift+g	exec --no-startup-id gimp; workspace $ws5
-#bindsym $mod+Shift+b	exec --no-startup-id blender; workspace $ws6
-###	</UNBIND KEYS>
-
-###	<CMUS>
-#set $music cmus
-#set $pause --no-startup-id cmus-remote -u 
-#set $next --no-startup-id cmus-remote -n
-#set $prev --no-startup-id cmus-remote -r
-#set $lilfor --no-startup-id cmus-remote -k 10
-#set $bigfor --no-startup-id cmus-remote -k 120
-#set $lilbak --no-startup-id cmus-remote -k -10
-#set $bigbak --no-startup-id cmus-remote -k -120
-#set $beg --no-startup-id cmus-remote -v 0%
-###	</CMUS>
 

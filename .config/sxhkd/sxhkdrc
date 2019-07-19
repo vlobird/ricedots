@@ -1,0 +1,90 @@
+# vim: filetype=sxhkdrc
+super + Return
+	$TERMINAL
+super + r
+	$TERMINAL -e ranger
+super + r
+	$TERMINAL -e sudo ranger -r /home/flo/.config/ranger /home/flo
+super + c
+	$TERMINAL -e qalc
+super + shift + c
+	$TERMINAL -e vim -c Calendar
+super + v
+	$TERMINAL -e vim
+super + d
+	dmenu_run
+super + g
+	dmenu-file-opener
+super + BackSpace
+	$TERMINAL -e htop
+super + shift + x
+	sh ~/.scripts/powermenu
+super + shift + BackSpace
+	eject
+super + Print
+	scrot
+super + shift + Print
+	scrot -u
+super + w
+	firefox ~/.config/startpage/index.html
+super + shift + w
+	torbrowser ~/.config/startpage/index.html
+super + e
+	$TERMINAL -e mutt
+super + shift + n
+	$TERMINAL -e newsbeuter
+super + F3
+	arandr
+super + F9
+	sh ~./scripts/mountselect
+super + F10
+	sh ~./scripts/umountselect
+
+# multimedia
+super + m
+	$TERMINAL -e $MUSIC
+super + p
+	cmus-remote -u
+super + n
+	cmus-remote -n
+super + b
+	cmus-remote -r
+super + a
+	$TERMINAL -e alsamixer
+super + shift + a
+	pavucontrol
+super + shift + m
+	amixer set Master -q toggle
+super {_,shift +} minus
+	amixer set Master -q {1,5}%-
+super {_,shift +} plus
+	amixer set Master -q {1,5}%+
+
+
+# media keys
+XF86Mail
+	$TERMINAL -e mutt
+XF86HomePage
+	firefox ~/.config/startpage/index.html
+$mod+XF86HomePage
+	firefox ~/.config/startpage/index.html
+$mod+XF86WWW
+	firefox ~/.config/startpage/index.html
+XF86Calculator
+	$TERMINAL -e qalc
+XF86AudioLowerVolume
+	amixer set Master -q 5%-
+XF86AudioMute
+	amixer set Master -q toggle
+XF86AudioRaiseVolume
+	amixer set Master -q 5%+
+XF86AudioStop
+	cmus-remote -s
+XF86AudioPrev
+	cmus-remote -r
+XF86AudioPlay
+	cmus-remote -u
+XF86AudioPause
+	cmus-remote -u
+XF86AudioNext
+	cmus-remote -n

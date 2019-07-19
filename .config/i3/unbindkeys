@@ -1,0 +1,125 @@
+# bindsym $mod+q	
+# bindsym $mod+Shift+q
+# bindsym $mod+Shift+Home	
+# bindsym $mod+Shift+End		
+# bindsym Scroll_Lock		
+# bindsym $mod+Scroll_Lock	
+# bindsym Pause			
+# bindsym $mod+Pause		
+# bindsym $mod+Prior	
+# bindsym $mod+Shift+Prior	
+# bindsym $mod+Next	
+# bindsym $mod+Shift+Next	
+# bindsym $mod+Shift+Escape
+# bindsym $mod+Shift+v	
+# bindsym $mod+semicolon	
+# bindsym $mod+backslash 	
+#bindsym $mod+u		exec --no-startup-id mupdf ~/.config/Scripts/luke_guide.pdf
+#bindsym $mod+Shift+e	exec --no-startup-id icedove ; exec --no-startup-id thunderbird
+#bindsym $mod+Shift+f	exec --no-startup-id filezilla
+#bindsym $mod+Shift+g	exec --no-startup-id gimp; workspace $ws5
+#bindsym $mod+Shift+b	exec --no-startup-id blender; workspace $ws6
+#set $music cmus
+#set $pause --no-startup-id cmus-remote -u 
+#set $next --no-startup-id cmus-remote -n
+#set $prev --no-startup-id cmus-remote -r
+#set $lilfor --no-startup-id cmus-remote -k 10
+#set $bigfor --no-startup-id cmus-remote -k 120
+#set $lilbak --no-startup-id cmus-remote -k -10
+#set $bigbak --no-startup-id cmus-remote -k -120
+#set $beg --no-startup-id cmus-remote -v 0%
+#exec --no-startup-id nm-applet
+#exec --no-startup-id xcompmgr -slt
+#exec --no-startup-id xset -dpms
+#exec --no-startup-id xset s off
+#exec --no-startup-id numlockx
+#exec --no-startup-id dunst
+#exec --no-startup-id mpd
+#exec --no-startup-id sh ~/.screenlayout/extern.sh
+#exec --no-startup-id killall pulseaudio
+#exec_always --no-startup-id setxkbmap de
+#exec_always --no-startup-id EDITOR=/usr/bin/vim
+#exec_always --no-startup-id feh --recursive --randomize --bg-scale ~/multimedia/pictures/wallpapers
+#set $music ncmpcpp
+#set $music cmus
+#set $pause --no-startup-id mocp -G 
+#set $next --no-startup-id mocp -f
+#set $prev --no-startup-id mocp -r
+#set $lilfor --no-startup-id mocp -k 10
+#set $bigfor --no-startup-id mocp -k 120
+#set $lilbak --no-startup-id mocp -k -10
+#set $bigbak --no-startup-id mocp -k -120
+#set $beg --no-startup-id mocp -j 0%
+#bindsym $mod+w		exec $browser ~/.config/startpage/index.html
+#bindsym $mod+Shift+w	exec $browser2 ~/.config/startpage/index.html
+#bindsym $mod+r 		exec $term -e ranger
+#bindsym $mod+Shift+r	exec $term -e sudo ranger -r /home/flo/.config/ranger /home/flo
+#bindsym $mod+c		exec $term -e qalc
+#bindsym $mod+v		exec $term -e vim
+#bindsym $mod+a			exec $term -e alsamixer
+#bindsym $mod+Shift+a		exec pavucontrol
+#bindsym $mod+Shift+m		exec --no-startup-id pamixer -t
+#bindsym $mod+plus		exec --no-startup-id pamixer -i 1
+#bindsym $mod+Shift+plus	exec --no-startup-id pamixer -i 5
+#bindsym $mod+minus 		exec --no-startup-id pamixer -d 1
+#bindsym $mod+Shift+minus	exec --no-startup-id pamixer -d 5
+#bindsym $mod+Shift+m		exec --no-startup-id amixer set Master -q toggle
+#bindsym $mod+plus		exec --no-startup-id amixer set Master -q 1%+
+#bindsym $mod+Shift+plus		exec --no-startup-id amixer set Master -q 5%+
+#bindsym $mod+minus		exec --no-startup-id amixer set Master -q 1%-
+#bindsym $mod+Shift+minus	exec --no-startup-id amixer set Master -q 5%-
+#bindsym $mod+m 		exec $term -e $music -c /home/flo/.config/ncmpcpp/bindings
+#bindsym $mod+Return 		exec $term
+#bindsym $mod+Shift+Return 	exec $term -e qalc
+#bindsym $mod+Shift+x		exec --no-startup-id sh ~/.scripts/powermenu
+#bindsym $mod+BackSpace 		exec $term -e htop
+#bindsym $mod+Shift+BackSpace 	exec eject
+#bindsym $mod+d			exec dmenu_run
+#bindsym Print 			exec --no-startup-id scrot
+#bindsym Shift+Print 		exec --no-startup-id scrot -u
+#bindsym $mod+g			exec dmenu-file-opener
+#bindsym $mod+F1
+#bindsym $mod+F2
+#bindsym $mod+F3		exec --no-startup-id arandr
+#bindsym $mod+F4
+#bindsym $mod+F5 
+#bindsym $mod+F6
+#bindsym $mod+F7		exec transset-df -a --dec .15
+#bindsym $mod+F8		exec transset-df -a --inc .15
+#bindsym $mod+F9		exec --no-startup-id bash ~/.scripts/mountselect
+#bindsym $mod+F10	exec --no-startup-id bash ~/.scripts/umountselect
+#bindsym $mod+F11	
+#bindsym $mod+F12	
+#bindsym f1		
+#bindsym f2
+#bindsym f3
+#bindsym f4
+#bindsym f5
+#bindsym f6
+#bindsym f7
+#bindsym f8
+#bindsym f9
+#bindsym F10
+#bindsym F11		fullscreen toggle
+#bindsym F12
+#bindsym $mod+m 		exec $term -e $music
+#bindsym $mod+p		exec $pause
+#bindsym $mod+b		exec $prev
+#bindsym $mod+n		exec $next
+#bindsym $mod+o		exec --no-startup-id $beg
+#bindsym $mod+e		exec $term -e mutt
+#bindsym $mod+Shift+n	exec $term -e newsbeuter
+#bindsym XF86Launch1		
+#bindsym XF86AudioPlay		exec $pause
+#bindsym XF86AudioPause		exec $pause
+#bindsym XF86AudioNext		exec $next
+#bindsym XF86AudioPrev		exec $prev
+#bindsym XF86AudioStop		exec $pause
+#bindsym XF86AudioRaiseVolume	exec --no-startup-id pamixer -i 5
+#bindsym XF86AudioLowerVolume	exec --no-startup-id pamixer -d 5
+#bindsym XF86AudioMute		exec --no-startup-id pamixer -t
+#bindsym XF86Mail		exec $term -e "mutt -F ~/.config/mutt/muttrc"
+#bindsym XF86HomePage		exec --no-startup-id $browser 
+#bindsym $mod+XF86HomePage	exec --no-startup-id $browser
+#bindsym $mod+XF86WWW		exec --no-startup-id $browser
+#bindsym XF86Calculator		exec $term -e qalc
