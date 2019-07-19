@@ -1,0 +1,11 @@
+#!/bin/sh
+feh --recursive --randomize --bg-scale ~/multimedia/pictures/wallpapers &
+nm-applet &
+xcompmgr -slt &
+xset -dpms &
+xset s off &
+numlockx &
+dunst &
+sh ~/.screenlayout/extern.sh &
+sxhkd &
+setxkbmap de &
